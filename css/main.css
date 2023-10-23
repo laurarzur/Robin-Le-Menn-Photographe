@@ -1,0 +1,521 @@
+/* TODO : CHANGER LES JUSTIFY-CONTENT DU FOOTER */
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* pas de dépassement du conteneur avec les margin et padding */
+    color: #666; 
+    overflow-x: hidden; /* pas de scrollbar horizontale*/
+} 
+
+/* IMPORTATION DES POLICES */
+@font-face {
+    font-family: 'Antic Didone';
+    src: url('/fonts/AnticDidone-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Cinzel';
+    src: url('/fonts/Cinzel-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    src: url('/fonts/Quicksand-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+} 
+
+/* DISPOSITIONS PRINCIPALES*/
+body, 
+.quicksand {
+    font-family: 'Quicksand', sans-serif; /* police du texte */
+    font-size: 14px; 
+    text-align: center;
+} 
+
+main {
+    margin: auto 7%; /* marge pour le corps de la page sur les côtés */
+}
+
+h2, h3, img, p, button {
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+a, h1, h2, h3 {
+    color: #111; /* couleur des titres et liens */
+} 
+
+a, .avis, footer p, footer img {
+    text-decoration: none; /* seulement pour les liens */
+    margin-bottom: 10px; 
+} 
+
+a:hover {
+    text-decoration: underline; /* souligner les liens quand la souris passe dessus */
+    cursor: pointer;
+} 
+
+nav li,
+h2, 
+.quicksand {
+    text-transform: uppercase; /* passer en majuscules */
+}
+
+h1 {
+    font-family: 'Cinzel', serif; /* police des titres */
+    font-size: 16px; 
+    margin: 30px auto;
+} 
+
+#cinzel {
+    font-family: 'Cinzel', serif; /* slogan du footer */
+}
+
+h2, 
+h3, 
+.avis, 
+.avis + p {
+    font-family: 'Antic Didone', serif; /* police des petits titres*/
+}
+
+nav>ul {
+    list-style: none; /* pas de petits disques devant les li */
+} 
+
+.flex { 
+    display: flex; 
+    flex-direction: column; /* pour la version mobile */
+    width: 100%;
+} 
+
+.portrait, 
+.paysage { /* images */
+    background-repeat: no-repeat; 
+    background-size: contain; 
+    align-self: center; 
+    width: 100%;
+}
+
+/*.icons {
+     -?? 
+}*/
+
+/* LOGO */
+#nav>a, #nav-index>a, header>#row>a, #connexion>img { 
+    width: 12em;
+    display: block; 
+    margin: auto;
+} 
+
+#nav>a>img, #nav-index>a>img, header>#row>a>img {
+    width: 100%; 
+    margin-bottom: 0;
+} 
+
+/* MENUS BURGER */
+#nav, #nav-index {
+    align-items: center; 
+}
+
+#burger, #burger-index {
+    width: 7.5%; 
+    max-width: 30px; 
+    position: absolute; /* restera à 30px du top-right-corner de la page */
+    top: 30px; 
+    right: 30px; 
+    z-index: 2; /* faire apparaîte l'icône par dessus l'image et le menu déroulant */
+} 
+
+#menu, #menu-index {
+    position: absolute; 
+    top: 20px; 
+    right: 20px;
+    background-color: white; /* fond du menu en blanc */
+    box-shadow: 0 4px 4px; 
+    width: 120px; 
+    padding-top: 45px; /* pour ne pas avoir les liens au même niveau que l'icône burger */
+    /*transform: translateX(-500%);*/
+    display: none; /* caché par défaut */ 
+}
+
+#menu-right:last-child, 
+#right-menu:last-child {
+    margin-bottom: 8px; /* mettre une marge entre le dernier li et le background du menu */
+}
+
+#menu.active, #menu-index.active {
+  /* transform: translateX(0);*/
+  display: flex; /* faire apparaître le menu quand la classe active est ajoutée*/
+}
+
+#menu li, #menu-index li {
+    margin: 5px auto; /* centrés, avec 5px de marge entre eux */
+} 
+
+/* IMAGE DE FOND DU HEADER */
+.bg-img {
+    background-image: url("/img/header.jpg"); 
+    width: 100%; 
+    height: 40em;
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center; 
+} 
+
+/* AJOUTER UNE BORDER-TOP AUX H2 DE LA CLASSE BORDER (PAGE ACCUEIL ET CONTACT) */
+.border>h2 {
+    border-top: 1px solid #666; 
+    padding-top: 30px; 
+    width: 80%; 
+    margin-left: auto; 
+    margin-right: auto;
+} 
+
+/* ÉTOILES DES AVIS */
+img.avis {
+    width: 100px; 
+    align-self: center;
+} 
+
+/* FORMULAIRE PAGE CONTACT */
+#hide-form { 
+    margin: auto;
+    min-width: 275px;
+    max-width: 500px; /* pour éviter qu'il s'étende à l'infini même en version desktop*/
+}
+
+#hide-form > div {
+    display: flex;
+    flex-direction: column; /* labels au dessus des inputs */
+}
+
+#hide-form > div > label { 
+    display: flex;
+    justify-content: start; /* label tout à gauche */
+} 
+
+#hide-form > div > input, 
+#hide-form > div > textarea  { 
+    border: 1px solid #666;
+    border-radius: 3px; /* "arrondir" les angles */
+    margin: 10px 0 20px; /* mettre 10px entre le label et l'input (ou textarea) et 20px avant le label suivant*/
+} 
+
+#hide-form > div > input {
+    height: 30px; /* plus joli avec un peu plus de hauteur */
+}
+
+.required::after, 
+#mini::before { /* ajouter une astérisque pour les champs obligatoires */
+    content: " * ";
+}  
+
+#mini {
+    font-size: 10px; /* réduire la police du texte "champs obligatoires" */
+}
+
+#hide-form > button, #btn-msg {
+    background-color: #fff; 
+    border: none;
+    border-radius: 5px; 
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); /* ombre plus douce */
+    padding: 12px 50px;
+}
+
+#btn-msg { /* faux bouton du formulaire */
+    display: none;
+}
+
+/* FOOTER PRINCIPAL */
+footer {
+    border-top: 1px solid #111; 
+    padding-top: 10px;
+} 
+
+footer img {
+    width: 30px;
+}
+
+.column > div > a {
+    text-decoration: underline; /* liens soulignés dans le footer */
+} 
+
+.column, .column > div { 
+    display: flex;
+    flex-direction: column; /* affichage des 2 liens l'un au dessus de l'autre */
+}
+
+#hidden-fiche {
+    display: none;
+}
+
+/* HEADER ADMIN */
+#icon-msg, #icon-deco {
+    width: 2em; 
+    height: 2em; /* donner une taille complète pour éviter les déformations dûes au display flex */
+    margin: 50px;
+}
+
+#icon-msg {
+    margin-right: 0; 
+    margin-left: 15%;
+} 
+
+#icon-deco {
+    margin-left: 0; 
+    margin-right: 15%; /* même distance du bord de la page pour les 2 icônes */
+}
+
+/* MENU CÔTÉ ADMIN */
+
+#row { /* contient les icônes et le logo */
+    display: flex;
+    justify-content: space-between;
+ }
+
+#nav-admin>ul {
+    display: flex;
+    flex-direction: row; 
+    flex-wrap: wrap; /* aller à la ligne si tout ne rentre pas */
+    justify-content: space-evenly; /* tout est espacé de manière égale*/
+    margin-top: 0; 
+}
+
+#nav-admin>ul:first-child {
+    border-top: 1px solid #666; /* ajouter une ligne en haut pour border le menu */
+} 
+
+#nav-admin>ul:last-child {
+    border-bottom: 1px solid #666;  /* et une au dessous */
+    margin-bottom: 0px; 
+}
+
+#nav-admin>ul>li {
+    margin: 10px;
+}
+
+/* 3EMES PARAGRAPHE ET IMAGE DANS CRÉER ARTICLE */
+.hidden {
+    display: none; /* caché en attendant un clic sur le bouton d'ajout */
+} 
+
+/* ICÔNE D'AJOUT CÔTÉ ADMIN */
+.plus {
+    width: 2em; 
+} 
+
+.lien-plus {
+    display: flex;
+    justify-content: end; /*  */
+}
+
+/* LIENS DANS LA GESTION DES CATÉGORIES */
+.update, .delete {
+    margin-bottom: 50px;
+}
+
+/* MESSAGE D'ERREUR CÔTÉ ADMIN */
+.erreur {
+    color: red;
+} 
+
+/* MESSAGE DE CONFIRMATION CÔTÉ ADMIN */
+.success {
+    color: green;
+} 
+
+
+/* VERSION DESKTOP */
+@media screen and (min-width: 1000px) { 
+
+    /* DISPOSITIONS DE BASE */
+    body, h2, h3, p,
+    .quicksand { 
+        font-size: 20px;
+    } 
+
+    h1 {
+        font-size: 22px;
+    }
+
+    h1, h2, h3, img, button, .bg-img {
+        margin-bottom: 50px; /* laisser respirer un peu plus les éléments */
+    } 
+
+    h1 + p, p + p, .m-100 {
+        margin-bottom: 100px; /* mettre des vraies séparations dans les pages */
+    } 
+
+    h3 {
+        margin-bottom: 0; /* éviter l'accumulation des marges */
+    } 
+
+    .flex {
+        display: flex;
+        flex-direction: row; /* passer en row pour tous les display flex */
+        justify-content: center;
+    } 
+
+    .reverse {
+        flex-direction: row-reverse; /* inverser certains contenus */
+    } 
+
+    .flex>.row {
+        flex-direction: row; /* mettre les classes "row" en row*/
+    } 
+
+    .column { 
+        flex-direction: column; /* et les classes "column" en column*/
+    } 
+
+    .portrait, .paysage { /* modifier les marges des images */
+        margin: 20px; 
+        margin-bottom: 100px;
+    } 
+
+    /* ANCIENS MENUS BURGER */
+    nav ul { 
+        display: flex; 
+        flex-direction: row;
+    } 
+
+    #nav, #nav-index {
+        display: flex; 
+        align-items: center; 
+    }
+
+    #burger, #burger>img, 
+    #burger-index, #burger-index>img {
+        display: none; /* enlever l'icône burger */
+    }
+
+    #menu, #menu-index {
+        display: flex; 
+        width: 100%; /* prendre la taille de l'écran */
+        box-shadow: none; 
+        background-color: transparent; /* retirer le background blanc */
+        justify-content: space-between; /* bien espacer les 2 parties du menu */
+        top: 30px; /* mettre au niveau du logo */
+        right: 0; 
+    }
+
+    #left-menu, #menu-left {
+        margin: 0; 
+        padding: 0;
+        width: 40%;
+    }
+
+    #right-menu, #menu-right {
+        width: 40%; /* donner la même largeur aux 2 parties */
+    }
+
+    #nav>a, #nav-index>a {
+        margin-top: 30px; /* lien du logo */
+    }
+
+    /* IMAGE DE FOND DU HEADER*/
+    .bg-img {
+        width: auto;
+        height: 40em; 
+        background-repeat: no-repeat; 
+        background-size: cover;  
+    }
+
+    /* PAGE D'ACCUEIL ET A PROPOS*/
+    #mariage, #couple, #robin {
+        align-self: center; 
+        width: 500px; /* donner une taille fixe à la div texte et la photo dans "à propos" */
+    }
+
+    #mariage, .column>p {
+        margin-left: 8%; /* marge entre l'image et le texte */
+    }
+
+    #couple/*, #robin*/ {
+        margin-right: 8%; 
+    } 
+
+    #a-propos {
+        align-items: center; /* centrer le contenu */
+    }
+
+    .column > p { 
+        margin-bottom: 50px; /* distance entre les paragraphes */
+    }
+
+    /* DISPOSITION DES IMAGES DANS LA GALERIE PRINCIPALE */
+    .galerie { 
+        width: 20em; 
+        margin: 30px;
+    }
+ 
+    /* IMAGES DANS CHAQUE REPORTAGE */
+    section > .flex > .portrait, 
+    section > .flex > .paysage {
+        margin-bottom: 20px; /* chaque marge doit faire 20px pour rendre le tout harmonieux*/
+    }
+
+    /* PAGE CONTACT */   
+    .flex > div {
+        display: flex;
+        flex-direction: column; /* garder l'affichage en column */
+        width: 500px; /* donner la même taille à la div de l'image */
+    }
+
+    #border-left {
+        border-left: 1px solid #666; /* mettre une séparation entre les 2 sections */
+    }
+
+    #border-left > h2 { /* enlever la bordure top de la version mobile */
+        border-top: none; 
+        padding-top: 0; 
+        width: 100%;
+    }
+
+    #mini {
+        font-size: 16px; /* mettre "champs obligatoires" en plus petit que le reste */
+    }
+
+    .border > h2 {
+        width: 50%; /* permettre au h2 de s'étendre sur une seule ligne */
+    }
+
+    /* FOOTER PRINCIPAL */
+    footer {
+        margin-top: 40px; 
+        padding: 30px;
+    } 
+
+    footer .flex > div {
+        width: 100%;
+    }
+
+    footer > .flex { 
+        justify-content: center;
+    } 
+
+    footer .row {
+        justify-content: center;
+    } 
+
+    footer .row a {
+        margin: 0 50px; /* espacer les 2 icônes*/
+    } 
+
+    #cinzel {
+        width: 100%; /* permettre au slogan de s'étendre plus */ 
+        text-align: end;
+    } 
+    
+    .column > div {
+        flex-direction: row; /* mettre les 2 liens côte à côte */
+        justify-content: space-evenly; 
+        margin: 10px auto; /* espacer par rapport au reste */
+    }
+}
